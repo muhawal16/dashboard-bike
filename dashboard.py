@@ -23,11 +23,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
-# Evaluasi model
-y_pred = model.predict(X_test)
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
 # Menambahkan fitur input pengguna untuk prediksi
 st.title("Aplikasi Prediksi Penyewaan Sepeda")
 st.sidebar.header("Masukkan Kondisi untuk Prediksi")
@@ -55,11 +50,6 @@ predicted_rentals = model.predict(user_input)[0]
 
 st.header("Hasil Prediksi")
 st.write(f"Jumlah penyewaan sepeda yang diprediksi: **{int(predicted_rentals)}** sepeda")
-
-# Menampilkan evaluasi model
-st.sidebar.subheader("Evaluasi Model")
-st.sidebar.write(f"Mean Squared Error (MSE): {mse:.2f}")
-st.sidebar.write(f"R2 Score: {r2:.2f}")
 
 # Grafik yang lebih menarik untuk hasil prediksi
 st.subheader("Hasil Prediksi Penyewaan Sepeda")
